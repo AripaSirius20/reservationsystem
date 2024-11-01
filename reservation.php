@@ -1,24 +1,40 @@
-<!-- reservation.php -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Make a Reservation</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Rezervasyon Yap</title>
 </head>
 <body>
-    <h2>Make a Reservation</h2>
-    <form action="reservation.php" method="POST">
-        <label for="date">Date:</label>
-        <input type="date" name="date" required><br>
+<ul>
+        <li><a href="index.php">Ana Sayfa</a></li>
+        <li><a href="register.php">Kayıt Ol</a></li>
+        <li><a href="login.php">Oturum Aç</a></li>
+        <li><a href="reservation.php">Rezervasyon Yap</a></li>
+        <li><a href="reservations.php">Rezervasyonlar</a></li>
+    </ul>
+    <div class="container">
+        <h1>Rezervasyon Yap</h1>
+        <form action="reservation.php" method="post">
+            <label for="date">Tarih</label>
+            <input type="date" id="date" name="date" required>
 
-        <label for="time">Time:</label>
-        <input type="time" name="time" required><br>
+            <label for="time">Saat</label>
+            <input type="time" id="time" name="time" required>
 
-        <button type="submit" name="reserve">Reserve</button>
-    </form>
+            <button type="submit">Rezervasyon Oluştur</button>
+        </form>
+        <?php if (isset($successMessage)) : ?>
+            <div class="success-message"><?php echo $successMessage; ?></div>
+        <?php endif; ?>
+        <?php if (isset($errorMessage)) : ?>
+            <div class="error-message"><?php echo $errorMessage; ?></div>
+        <?php endif; ?>
+    </div>
 </body>
 </html>
+
 <?php
 // reservation.php
 session_start();

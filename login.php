@@ -1,24 +1,38 @@
 <!-- login.php -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <link rel="stylesheet" href="style.css">
+    <title>Oturum Aç</title>
 </head>
 <body>
-    <h2>Login</h2>
-    <form action="login.php" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" name="username" required><br>
+<ul>
+        <li><a href="index.php">Ana Sayfa</a></li>
+        <li><a href="register.php">Kayıt Ol</a></li>
+        <li><a href="login.php">Oturum Aç</a></li>
+        <li><a href="reservation.php">Rezervasyon Yap</a></li>
+        <li><a href="reservations.php">Rezervasyonlar</a></li>
+    </ul>
+    <div class="container">
+        <h1>Oturum Aç</h1>
+        <form action="login.php" method="post">
+            <label for="username">Kullanıcı Adı</label>
+            <input type="text" id="username" name="username" required>
 
-        <label for="password">Password:</label>
-        <input type="password" name="password" required><br>
+            <label for="password">Şifre</label>
+            <input type="password" id="password" name="password" required>
 
-        <button type="submit" name="login">Login</button>
-    </form>
+            <button type="submit">Oturum Aç</button>
+        </form>
+        <?php if (isset($errorMessage)) : ?>
+            <div class="error-message"><?php echo $errorMessage; ?></div>
+        <?php endif; ?>
+    </div>
 </body>
 </html>
+
 <?php
 // login.php
 session_start();
